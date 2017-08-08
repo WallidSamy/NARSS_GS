@@ -9,7 +9,8 @@ public class Database_connect {
     public static void connect(){
         Connection conn=null;
         try{
-            String url = "jdbc:sqlite:C:\\Users\\Wallid Samy\\Desktop\\project\\groundsubsystem.sqlite";
+            //String url = "jdbc:sqlite:C:\\Users\\Wallid Samy\\Desktop\\project\\groundsubsystem.sqlite";
+            String url = "jdbc:sqlite:src\\groundsubsystem.sqlite";
             conn = DriverManager.getConnection(url);
             System.out.println("Connection to SQLite has been established."); 
         }catch (SQLException e){
