@@ -26,7 +26,4 @@ public class Database_connect {
             }
         }
     }
-    public static void main(String[] args){
-        connect();
-    }
 }
