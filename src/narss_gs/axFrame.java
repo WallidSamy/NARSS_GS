@@ -22,15 +22,30 @@ public class axFrame {
         return frame[1];
     }
     public void removeDataZeros(){
-        for(int i=5;i<261;i++){
+        for(int i=5;i<100;i++){
             dataBytes[i-5]=frame[i];
-            dataBytes[i-5]=10;
+            dataBytes[i-5]=0x7F;
         }
         BitSet dataBits = BitSet.valueOf(dataBytes);
-        System.out.println("Length of bitset = " + dataBits.length());
-        for (int i=0; i<dataBits.length(); ++i) {
-            System.out.println("bit " + i + ": " + dataBits.get(i));
+        BitSet dataBitsBuffer = new BitSet(2048);
+        int j=0;
+        for(int i=0;i<dataBits.length();i++){
+            if(dataBits.get(i))
+                onesCounter++;
+            else
+                onesCounter=0;
+            dataBitsBuffer.set(j,dataBits.get(i));
+            j++;
+            if(onesCounter==5){
+                onesCounter =0;
+                dataBitsBuffer.set(++j,false);
+            }
         }
+        System.out.println("Length of bitset = " + dataBitsBuffer.length());
+        for (int i=0; i<dataBitsBuffer.length(); ++i) {
+            System.out.println("bit " + i + ": " + dataBitsBuffer.get(i));
+        }
+        
     }
     public static void main(String[] args){
         axFrame packet = new axFrame();
