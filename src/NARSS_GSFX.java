@@ -21,15 +21,15 @@ public class NARSS_GSFX extends Application {
     public void start(Stage stage) throws Exception {
         SerialPortComm serial = new SerialPortComm();
 
-        if (serial.isSlected()) {
+        if (!serial.isSlected()) {
             Parent root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
             Scene scene = new Scene(root);
             stage.setTitle("Ground Station");
             stage.setScene(scene);
             stage.show();
-        }else{
-                        System.out.println("User cancelled");
-                        System.exit(0);
+        } else {
+            System.out.println("User cancelled");
+            System.exit(0);
 
         }
     }
