@@ -10,8 +10,8 @@ package narss_gs;
  * @author maxxi
  */
 public class CRC {
-    
-   public int GenerateChecksumCRC16(int bytes[]) {
+
+    public int GenerateChecksumCRC16(int bytes[]) {
 
         int crc = 0xFFFF;
         int temp;
@@ -33,7 +33,7 @@ public class CRC {
                     crc &= 0xFFFF;
                 }
 
-                crc_byte <<=1;
+                crc_byte <<= 1;
                 crc_byte &= 0xFF;
 
             }
@@ -41,5 +41,5 @@ public class CRC {
 
         return crc;
     }
-   
+
 }
